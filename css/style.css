@@ -234,6 +234,29 @@ td, th {
   margin-bottom: 24px;
 }
 
+.site-footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 8px 16px 20px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #ebdbb2;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  color: #fabd2f;
+}
+
 .copy-feedback {
   position: fixed;
   bottom: 16px;
