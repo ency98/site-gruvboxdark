@@ -99,8 +99,11 @@ img {
    .col-md-6 = half-width column on medium+ screens.
 ============================================== */
 .row {
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 0;
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* All columns share these base styles */
@@ -109,13 +112,16 @@ img {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  width: 100%;
+  max-width: 760px;
+  text-align: center;
 }
 
 /* On medium screens (992px+), col-md-6 becomes half width */
 @media (min-width: 992px) {
   .col-md-6 {
-    float: left;
-    width: 50%;
+    float: none;
+    width: 100%;
   }
 }
 
@@ -150,7 +156,7 @@ table {
 }
 
 th {
-  text-align: left;
+  text-align: center;
 }
 
 /* .table adds padding, borders, and full width */
@@ -158,6 +164,27 @@ th {
   width: 100%;
   max-width: 100%;
   margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+}
+
+td {
+  text-align: center;
+}
+
+.table tr > :nth-child(1) {
+  width: 30%;
+}
+
+.table tr > :nth-child(2) {
+  width: 40%;
+  text-align: center;
+}
+
+.table tr > :nth-child(3) {
+  width: 30%;
+  text-align: center;
 }
 
 .table > thead > tr > th,
@@ -168,6 +195,11 @@ th {
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #ddd;
+}
+
+.table > thead > tr > th:nth-child(3),
+.table > tbody > tr > td:nth-child(3) {
+  padding-right: 0;
 }
 
 .table > thead > tr > th {
@@ -220,6 +252,29 @@ td, th {
 .fullrow {
   margin-top: 20px;
   margin-bottom: 24px;
+}
+
+.copy-feedback {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #282828;
+  color: #ebdbb2;
+  border: 1px solid #504945;
+  font-size: 12px;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.copy-feedback.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 

@@ -30,6 +30,7 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
+            <p></p>
             <div class="col-md-6">
                 <h2>Colors in Palette</h2>
                 <table class="table">
@@ -67,13 +68,32 @@
             </div>
         </div>
     </div>
+    <div id="copy-feedback" class="copy-feedback" aria-live="polite"></div>
     <script>
         (function () {
+            var feedback = document.getElementById("copy-feedback");
+            var feedbackTimer = null;
+
             function firstHex(text) {
                 if (!text) return null;
                 var match = text.match(/#?[0-9a-fA-F]{6}/);
                 if (!match) return null;
                 return (match[0].startsWith("#") ? match[0] : "#" + match[0]).toLowerCase();
+            }
+
+            function showFeedback(message) {
+                if (!feedback) return;
+
+                feedback.textContent = message;
+                feedback.classList.add("is-visible");
+
+                if (feedbackTimer) {
+                    clearTimeout(feedbackTimer);
+                }
+
+                feedbackTimer = setTimeout(function () {
+                    feedback.classList.remove("is-visible");
+                }, 1200);
             }
 
             function hexFromElement(element) {
@@ -144,9 +164,13 @@
                 var hex = findAssociatedHex(event.target);
                 if (!hex) return;
 
-                copyText(hex).catch(function () {
-                    // Clipboard may be blocked by browser permissions.
-                });
+                copyText(hex)
+                    .then(function () {
+                        showFeedback("Copied " + hex);
+                    })
+                    .catch(function () {
+                        showFeedback("Unable to copy");
+                    });
             });
         })();
     </script>
