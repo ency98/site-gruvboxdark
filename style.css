@@ -1,0 +1,254 @@
+/* ==============================================
+   BASE RESET
+   Removes default browser spacing/styling so
+   everything looks consistent across browsers.
+============================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #535151;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+html {
+  font-size: 1.125rem;
+  -webkit-text-size-adjust: 100%;
+  overflow-y: scroll;
+}
+
+
+/* ==============================================
+   LINKS
+   Default link color and hover behavior.
+============================================== */
+a {
+  color: #d79921;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+
+
+/* ==============================================
+   HEADINGS
+   Font sizes and spacing for h1 through h5.
+============================================== */
+h1, h2, h3, h4, h5 {
+  font-family: inherit;
+  font-weight: 400;
+  line-height: 1.1;
+  color: inherit;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h1 { font-size: 30px; }
+h2 { font-size: 27px; }
+h3 { font-size: 24px; }
+
+
+/* ==============================================
+   IMAGES
+   Makes images scale correctly and never
+   overflow their container.
+============================================== */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ==============================================
+   LAYOUT — CONTAINER
+   Centers the page content and sets a max width.
+   Gets narrower on smaller screens.
+============================================== */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1170px;
+  display: block;
+}
+
+@media (min-width: 768px)  { .container { width: 750px; } }
+@media (min-width: 992px)  { .container { width: 970px; } }
+@media (min-width: 1200px) { .container { width: 1170px; } }
+
+
+/* ==============================================
+   LAYOUT — GRID ROW & COLUMNS
+   .row is a horizontal group of columns.
+   .col-md-6 = half-width column on medium+ screens.
+============================================== */
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* All columns share these base styles */
+.col-md-6 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* On medium screens (992px+), col-md-6 becomes half width */
+@media (min-width: 992px) {
+  .col-md-6 {
+    float: left;
+    width: 50%;
+  }
+}
+
+
+/* ==============================================
+   LAYOUT — CLEARFIX
+   Clears floated elements so the container
+   wraps around them correctly.
+============================================== */
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after,
+.row:after {
+  clear: both;
+}
+
+
+/* ==============================================
+   TABLE
+   Styles the color details table on the page.
+============================================== */
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  background-color: transparent;
+}
+
+th {
+  text-align: left;
+}
+
+/* .table adds padding, borders, and full width */
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+}
+
+.table > thead:first-child > tr:first-child > th,
+.table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+/* ==============================================
+   COLOR PALETTE DISPLAY
+   The row of large colored blocks shown at the
+   top of the page under the title.
+============================================== */
+.palettecontainer {
+  margin: 10px 0;
+  padding: 0;
+  /* Adds a subtle shadow around the palette strip */
+  box-shadow: 0 0 1px #00000024, 0 1px 6px #00000033;
+}
+
+/* Each colored block inside the palette strip */
+.palettecolordivc {
+  color: white;
+  float: left;       /* Sits side by side */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-shadow: 2px 2px 2px #333133;
+  height: 217px;
+  width: 20%;        /* 5 colors × 20% = 100% width total */
+}
+
+
+/* ==============================================
+   UTILITY CLASSES
+   Small helpers used directly in the HTML.
+============================================== */
+
+/* Centers text */
+
+/* Adds vertical spacing above and below an element */
+.fullrow {
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+
+/* ==============================================
+   PRINT STYLES
+   Makes the page print cleanly in black & white.
+============================================== */
+@media print {
+  * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  .table {
+    border-collapse: collapse !important;
+  }
+
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+}
