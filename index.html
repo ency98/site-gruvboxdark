@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Gruvbox-Dark Color Palette</title>
     <meta name="description"
         content="Gruvbox-Dark color palette created by glenntatum that consists #8ec07c,#458588,#d79921,#cc241d,#3c3836 colors." />
@@ -13,24 +13,26 @@
 
 <body>
     <div class="container">
-        <div class="row fullrow">
+        <div class="row full-row">
             <div class="col-md-6">
                 <h1>Gruvbox-Dark (Simplified) Color Palette</h1>
-                <div class="palettecontainer">
-                    <div class="palettecolordivc" title="#8ec07c" style="background-color:#8ec07c">
+                <div class="palette-container">
+                    <div class="palette-color-block" title="#8ec07c" style="background-color:#8ec07c">
                     </div>
-                    <div class="palettecolordivc" title="#458588" style="background-color:#458588">
+                    <div class="palette-color-block" title="#458588" style="background-color:#458588">
                     </div>
-                    <div class="palettecolordivc" title="#d79921" style="background-color:#d79921">
+                    <div class="palette-color-block" title="#d79921" style="background-color:#d79921">
                     </div>
-                    <div class="palettecolordivc" title="#cc241d" style="background-color:#cc241d">
+                    <div class="palette-color-block" title="#cc241d" style="background-color:#cc241d">
                     </div>
-                    <div class="palettecolordivc" title="#3c3836" style="background-color:#3c3836">
+                    <div class="palette-color-block" title="#3c3836" style="background-color:#3c3836">
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <p></p>
+            <p>
+                <a href="images/gruvbox-dark.png">Download Pallete PNG</a>
+            </p>
             <div class="col-md-6">
                 <h2>Colors in Palette</h2>
                 <table class="table">
@@ -73,6 +75,7 @@
         (function () {
             var feedback = document.getElementById("copy-feedback");
             var feedbackTimer = null;
+
 
             function firstHex(text) {
                 if (!text) return null;

@@ -1,12 +1,9 @@
-/* ==============================================
-   BASE RESET
-   Removes default browser spacing/styling so
-   everything looks consistent across browsers.
-============================================== */
+/* RESET */
 * {
   box-sizing: border-box;
 }
 
+/* BODY STYLES */
 body {
   margin: 0;
   background-color: #535151;
@@ -28,10 +25,7 @@ html {
 }
 
 
-/* ==============================================
-   LINKS
-   Default link color and hover behavior.
-============================================== */
+/* LINKS */
 a {
   color: #d79921;
   text-decoration: none;
@@ -44,10 +38,7 @@ a:focus {
 }
 
 
-/* ==============================================
-   HEADINGS
-   Font sizes and spacing for h1 through h5.
-============================================== */
+/* HEADERS */
 h1, h2, h3, h4, h5 {
   font-family: inherit;
   font-weight: 400;
@@ -62,11 +53,7 @@ h2 { font-size: 27px; }
 h3 { font-size: 24px; }
 
 
-/* ==============================================
-   IMAGES
-   Makes images scale correctly and never
-   overflow their container.
-============================================== */
+/* IMAGES */
 img {
   max-width: 100%;
   height: auto;
@@ -145,10 +132,7 @@ img {
 }
 
 
-/* ==============================================
-   TABLE
-   Styles the color details table on the page.
-============================================== */
+/* TABLE */
 table {
   border-spacing: 0;
   border-collapse: collapse;
@@ -216,12 +200,8 @@ td, th {
   padding: 0;
 }
 
-/* ==============================================
-   COLOR PALETTE DISPLAY
-   The row of large colored blocks shown at the
-   top of the page under the title.
-============================================== */
-.palettecontainer {
+/* COLOR PALETTE DISPLAY */
+.palette-container {
   margin: 10px 0;
   padding: 0;
   /* Adds a subtle shadow around the palette strip */
@@ -229,7 +209,7 @@ td, th {
 }
 
 /* Each colored block inside the palette strip */
-.palettecolordivc {
+.palette-color-block {
   color: white;
   float: left;       /* Sits side by side */
   margin: 0;
@@ -249,7 +229,7 @@ td, th {
 /* Centers text */
 
 /* Adds vertical spacing above and below an element */
-.fullrow {
+.full-row {
   margin-top: 20px;
   margin-bottom: 24px;
 }
