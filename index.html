@@ -67,6 +67,89 @@
             </div>
         </div>
     </div>
+    <script>
+        (function () {
+            function firstHex(text) {
+                if (!text) return null;
+                var match = text.match(/#?[0-9a-fA-F]{6}/);
+                if (!match) return null;
+                return (match[0].startsWith("#") ? match[0] : "#" + match[0]).toLowerCase();
+            }
+
+            function hexFromElement(element) {
+                if (!element || element.nodeType !== 1) return null;
+
+                var fromData = firstHex(element.getAttribute("data-hex"));
+                if (fromData) return fromData;
+
+                var fromTitle = firstHex(element.getAttribute("title"));
+                if (fromTitle) return fromTitle;
+
+                var fromStyle = firstHex(element.getAttribute("style"));
+                if (fromStyle) return fromStyle;
+
+                if (element.tagName === "A") {
+                    var fromHref = firstHex(element.getAttribute("href"));
+                    if (fromHref) return fromHref;
+                }
+
+                var fromText = firstHex(element.textContent);
+                if (fromText) return fromText;
+
+                return null;
+            }
+
+            function findAssociatedHex(target) {
+                var current = target;
+                while (current && current !== document.body) {
+                    var direct = hexFromElement(current);
+                    if (direct) return direct;
+
+                    if (current.tagName === "TR") {
+                        var rowHexCell = current.querySelector('a[href*="/color/"], a[title*="#"], td[style*="#"], [title*="#"]');
+                        var rowHex = hexFromElement(rowHexCell);
+                        if (rowHex) return rowHex;
+                    }
+
+                    current = current.parentElement;
+                }
+                return null;
+            }
+
+            function copyText(text) {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    return navigator.clipboard.writeText(text);
+                }
+
+                return new Promise(function (resolve, reject) {
+                    var textarea = document.createElement("textarea");
+                    textarea.value = text;
+                    textarea.setAttribute("readonly", "");
+                    textarea.style.position = "absolute";
+                    textarea.style.left = "-9999px";
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        var ok = document.execCommand("copy");
+                        document.body.removeChild(textarea);
+                        ok ? resolve() : reject(new Error("copy failed"));
+                    } catch (error) {
+                        document.body.removeChild(textarea);
+                        reject(error);
+                    }
+                });
+            }
+
+            document.addEventListener("click", function (event) {
+                var hex = findAssociatedHex(event.target);
+                if (!hex) return;
+
+                copyText(hex).catch(function () {
+                    // Clipboard may be blocked by browser permissions.
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>
